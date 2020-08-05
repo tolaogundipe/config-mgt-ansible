@@ -1,24 +1,21 @@
 ---
 
-- hosts: all
-  become: yes
-  tasks:
-  - name: update apt packages
-    apt: 
+ - name: update apt packages
+   apt: 
         state: latest
 
-  - name: create a common directory called common
-    file:
+ - name: create a common directory called common
+   file:
         path: /home/tola/common
         state: directory
 
-  - name: create a common/ubuntu file on all nodes
-    file:
+ - name: create a common/ubuntu file on all nodes
+   file:
             path: /home/tola/common/ubuntu    
             state: touch
 
-  - name: install python, nfs client and ntp
-    apt: 
+ - name: install python, nfs client and ntp
+   apt: 
         name: ['ntp', 'nfs-common']
         state: present  
                 
