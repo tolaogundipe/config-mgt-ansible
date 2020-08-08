@@ -5,6 +5,9 @@
   tasks:
    - include: common.yml 
 
+- name: import assignments playbook
+  import_playbook: /home/tola/repo-clone/config-mgt-ansible/assignments/webservers.yml
+
 
 
 
