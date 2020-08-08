@@ -1,0 +1,34 @@
+---
+# tasks file for apache
+#
+
+  
+
+- name: install apache2
+  apt:
+          name: apache2
+          state: latest
+
+- name: remove the index.html file
+  file:
+          path: /var/www/html/index.html
+          state: absent
+
+- name: deploy software from github
+  git:
+          repo: https://github.com/darey-io/tooling.git
+          dest: /var/www/html
+          force: yes
+
+- name: allow firewall for apache2
+  ufw:
+          port: '80'
+          proto: tcp
+          rule: allow
+
+- name: start and enable apache2 service
+  service:
+          name: apache2
+          state: started
+          enabled: yes
+
